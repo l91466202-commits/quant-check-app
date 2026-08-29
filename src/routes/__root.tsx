@@ -77,24 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Budget Pulse — Live budget vs. actual dashboards" },
+      { title: "Adv. Rajeshkumar L. Yadav — Advocate & Notary, Mumbai" },
       {
         name: "description",
         content:
-          "Kill the quarterly budget-model rebuild. Import CSVs from your finance or CRM tool and get a live spend dashboard your leadership can open instead of Tableau screenshots.",
-      },
-      { property: "og:title", content: "Budget Pulse — Live budget vs. actual dashboards" },
-      {
-        property: "og:description",
-        content:
-          "Kill the quarterly budget-model rebuild. Import CSVs from your finance or CRM tool and get a live spend dashboard your leadership can open instead of Tableau screenshots.",
+          "Advocate & Notary (Govt. of India), B.A., LL.B., 19+ years of practice in Mumbai — criminal law, cheque bounce, family court, SARFAESI/DRT, documentation and notary services.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Budget Pulse — Live budget vs. actual dashboards" },
-      { name: "twitter:description", content: "Kill the quarterly budget-model rebuild. Import CSVs from your finance or CRM tool and get a live spend dashboard your leadership can open instead of Tableau screenshots." },
-      { property: "og:image", content: "https://budget-pulse-zen.lovable.app/__l5e/assets-v1/8de0b3ab-5594-43c3-9e05-c4c1b7436560/budget-pulse-dashboard.png" },
-      { name: "twitter:image", content: "https://budget-pulse-zen.lovable.app/__l5e/assets-v1/8de0b3ab-5594-43c3-9e05-c4c1b7436560/budget-pulse-dashboard.png" },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },
