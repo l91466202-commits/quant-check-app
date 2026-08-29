@@ -25,6 +25,8 @@ import {
 } from "lucide-react";
 import portrait from "@/assets/advocate-portrait.jpg.asset.json";
 import { LegalChatbot } from "@/components/legal/chatbot";
+import { submitLead } from "@/lib/leads";
+import { Star } from "lucide-react";
 
 const TITLE = "Adv. Rajeshkumar L. Yadav — Advocate & Notary, Mumbai";
 const DESC =
@@ -109,15 +111,49 @@ const SCHEMA = {
   memberOf: "Andheri Court Bar Association",
 };
 
+const REVIEWS = [
+  {
+    name: "Suresh M.",
+    matter: "Cheque Bounce (S.138 NI Act)",
+    text: "My cheque bounce case was dragging on before I met Adv. Yadav. He issued the statutory notice promptly and handled the complaint end to end. The matter was settled in my favour.",
+  },
+  {
+    name: "Priya D.",
+    matter: "Family Court Matter",
+    text: "He handled my case with complete discretion and patience. Every step was explained in simple language and I always knew what was happening. I felt genuinely supported throughout.",
+  },
+  {
+    name: "Anil K.",
+    matter: "Bail Matter",
+    text: "Adv. Yadav secured bail for my brother when we had lost hope. His courtroom experience and straight-talking advice made all the difference for our family.",
+  },
+];
+
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", area: "", message: "" });
+  const [saving, setSaving] = useState(false);
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) return;
-    toast.success("Thank you. Our team will contact you within 24 hours.");
-    setForm({ name: "", phone: "", email: "", area: "", message: "" });
+    if (!form.name.trim() || !form.phone.trim() || saving) return;
+    setSaving(true);
+    try {
+      await submitLead({
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        practice_area: form.area,
+        message: form.message,
+        source: "contact_form",
+      });
+      toast.success("Thank you. Your inquiry has been received — we will contact you within 24 hours.");
+      setForm({ name: "", phone: "", email: "", area: "", message: "" });
+    } catch {
+      toast.error("Could not submit your inquiry. Please call or WhatsApp us directly.");
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -145,7 +181,7 @@ function Landing() {
               href="#contact"
               className="rounded-full border border-border px-4 py-2 text-sm font-medium hover:bg-accent"
             >
-              Consult Now
+              Free Consultation
             </a>
           </nav>
           <button
@@ -192,7 +228,7 @@ function Landing() {
                 href="#contact"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground hover:opacity-90"
               >
-                Book a Consultation <ArrowRight className="h-4 w-4" />
+                Book a Free Consultation <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="tel:9029678910"

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Phone } from "lucide-react";
+import { submitLead } from "@/lib/leads";
 
 type Msg = { role: "bot" | "user"; text: string };
 
@@ -44,10 +45,10 @@ const QUICK_REPLIES: { label: string; area: string; reply: string }[] = [
       "Legal documentation, registration matters and notary services (Notary, Government of India) are available at the Sakinaka office. Share your details below.",
   },
   {
-    label: "Book a consultation",
+    label: "Book a free consultation",
     area: "",
     reply:
-      "Happy to help. Please share your name, phone number and a brief description of your issue, and we will confirm an appointment.",
+      "Happy to help — your first consultation is free. Please share your name, phone number and a brief description of your issue, and we will confirm an appointment.",
   },
 ];
 
@@ -106,16 +107,35 @@ export function LegalChatbot() {
     }, 300);
   }
 
-  function submitLead(e: React.FormEvent) {
+  const [saving, setSaving] = useState(false);
+
+  async function submitLeadForm(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) return;
-    push({ role: "user", text: `${form.name} — ${form.phone}${form.area ? ` — ${form.area}` : ""}` });
-    setShowForm(false);
-    setDone(true);
-    setTimeout(
-      () => push({ role: "bot", text: "Thank you. Our team will contact you within 24 hours." }),
-      300,
-    );
+    if (!form.name.trim() || !form.phone.trim() || saving) return;
+    setSaving(true);
+    try {
+      await submitLead({
+        name: form.name,
+        phone: form.phone,
+        practice_area: form.area,
+        message: form.issue,
+        source: "chatbot",
+      });
+      push({ role: "user", text: `${form.name} — ${form.phone}${form.area ? ` — ${form.area}` : ""}` });
+      setShowForm(false);
+      setDone(true);
+      setTimeout(
+        () => push({ role: "bot", text: "Thank you. Your inquiry has been received — our team will contact you within 24 hours." }),
+        300,
+      );
+    } catch {
+      push({
+        role: "bot",
+        text: "Sorry, your details could not be submitted. Please try again, or reach us directly on WhatsApp or call 9029678910.",
+      });
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -175,7 +195,7 @@ export function LegalChatbot() {
             )}
 
             {showForm && (
-              <form onSubmit={submitLead} className="space-y-2 rounded-2xl border border-border p-3">
+              <form onSubmit={submitLeadForm} className="space-y-2 rounded-2xl border border-border p-3">
                 <input
                   required
                   value={form.name}
@@ -214,9 +234,10 @@ export function LegalChatbot() {
                 />
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-foreground px-3 py-2 text-sm font-medium text-background hover:opacity-90"
+                  disabled={saving}
+                  className="w-full rounded-xl bg-foreground px-3 py-2 text-sm font-medium text-background hover:opacity-90 disabled:opacity-50"
                 >
-                  Send details
+                  {saving ? "Sending…" : "Send details"}
                 </button>
               </form>
             )}
