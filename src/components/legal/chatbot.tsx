@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Phone } from "lucide-react";
+import { submitLead } from "@/lib/leads";
 
 type Msg = { role: "bot" | "user"; text: string };
 
@@ -44,10 +45,10 @@ const QUICK_REPLIES: { label: string; area: string; reply: string }[] = [
       "Legal documentation, registration matters and notary services (Notary, Government of India) are available at the Sakinaka office. Share your details below.",
   },
   {
-    label: "Book a consultation",
+    label: "Book a free consultation",
     area: "",
     reply:
-      "Happy to help. Please share your name, phone number and a brief description of your issue, and we will confirm an appointment.",
+      "Happy to help — your first consultation is free. Please share your name, phone number and a brief description of your issue, and we will confirm an appointment.",
   },
 ];
 
