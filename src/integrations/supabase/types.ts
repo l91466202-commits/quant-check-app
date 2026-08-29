@@ -67,6 +67,39 @@ export type Database = {
           },
         ]
       }
+      leads: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          practice_area: string | null
+          source: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          practice_area?: string | null
+          source?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          practice_area?: string | null
+          source?: string
+        }
+        Relationships: []
+      }
       org_invites: {
         Row: {
           accepted_at: string | null
