@@ -107,16 +107,35 @@ export function LegalChatbot() {
     }, 300);
   }
 
-  function submitLead(e: React.FormEvent) {
+  const [saving, setSaving] = useState(false);
+
+  async function submitLeadForm(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) return;
-    push({ role: "user", text: `${form.name} — ${form.phone}${form.area ? ` — ${form.area}` : ""}` });
-    setShowForm(false);
-    setDone(true);
-    setTimeout(
-      () => push({ role: "bot", text: "Thank you. Our team will contact you within 24 hours." }),
-      300,
-    );
+    if (!form.name.trim() || !form.phone.trim() || saving) return;
+    setSaving(true);
+    try {
+      await submitLead({
+        name: form.name,
+        phone: form.phone,
+        practice_area: form.area,
+        message: form.issue,
+        source: "chatbot",
+      });
+      push({ role: "user", text: `${form.name} — ${form.phone}${form.area ? ` — ${form.area}` : ""}` });
+      setShowForm(false);
+      setDone(true);
+      setTimeout(
+        () => push({ role: "bot", text: "Thank you. Your inquiry has been received — our team will contact you within 24 hours." }),
+        300,
+      );
+    } catch {
+      push({
+        role: "bot",
+        text: "Sorry, your details could not be submitted. Please try again, or reach us directly on WhatsApp or call 9029678910.",
+      });
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
