@@ -181,7 +181,7 @@ function Landing() {
               href="#contact"
               className="rounded-full border border-border px-4 py-2 text-sm font-medium hover:bg-accent"
             >
-              Consult Now
+              Free Consultation
             </a>
           </nav>
           <button
@@ -228,7 +228,7 @@ function Landing() {
                 href="#contact"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground hover:opacity-90"
               >
-                Book a Consultation <ArrowRight className="h-4 w-4" />
+                Book a Free Consultation <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="tel:9029678910"
