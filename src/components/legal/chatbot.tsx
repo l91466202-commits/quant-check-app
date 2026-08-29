@@ -195,7 +195,7 @@ export function LegalChatbot() {
             )}
 
             {showForm && (
-              <form onSubmit={submitLead} className="space-y-2 rounded-2xl border border-border p-3">
+              <form onSubmit={submitLeadForm} className="space-y-2 rounded-2xl border border-border p-3">
                 <input
                   required
                   value={form.name}
@@ -234,9 +234,10 @@ export function LegalChatbot() {
                 />
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-foreground px-3 py-2 text-sm font-medium text-background hover:opacity-90"
+                  disabled={saving}
+                  className="w-full rounded-xl bg-foreground px-3 py-2 text-sm font-medium text-background hover:opacity-90 disabled:opacity-50"
                 >
-                  Send details
+                  {saving ? "Sending…" : "Send details"}
                 </button>
               </form>
             )}
