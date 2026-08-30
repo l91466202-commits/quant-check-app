@@ -259,7 +259,10 @@ function Landing() {
               src={portrait.url}
               alt="Portrait of Adv. Rajeshkumar L. Yadav in advocate robes"
               className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
+              width={800}
+              height={1000}
             />
           </div>
         </div>
