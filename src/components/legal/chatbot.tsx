@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Phone } from "lucide-react";
+import { MessageCircle, X, Send, Phone, CheckCircle2 } from "lucide-react";
 import { submitLead } from "@/lib/leads";
 
 type Msg = { role: "bot" | "user"; text: string };
@@ -52,6 +52,105 @@ const QUICK_REPLIES: { label: string; area: string; reply: string }[] = [
   },
 ];
 
+const OFFICE_ADDRESS =
+  "Our office: B-2, Shri Dhara Dham CHS., 90 FT Road, Sakinaka, Mumbai - 400 072. Working hours are Monday to Saturday, 10:00 AM to 6:00 PM.";
+const CONTACT_INFO =
+  "You can reach us on 9029678910 or 9819345724, or email yrajeshkumar1983@rediffmail.com. WhatsApp is also available on 9029678910.";
+const NOT_SURE =
+  "I am not sure about it — please contact our office and Adv. Rajeshkumar L. Yadav will advise you personally. You can also fill in your details below and we will call you back within 24 hours.";
+
+type Answer = { text: string; form?: boolean; area?: string };
+
+function has(t: string, words: string[]) {
+  return words.some((w) => t.includes(w));
+}
+
+function getAnswer(raw: string): Answer {
+  const t = raw.toLowerCase();
+
+  if (has(t, ["civil"]))
+    return {
+      text:
+        "We do not practice civil law. Please select from our practice areas: Criminal Law, NI Act, Family Court, SARFAESI/DRT, Documentation, or Notary Services.",
+    };
+
+  if (has(t, ["address", "office", "location", "where", "kaha", "kahan", "pata", "reach", "map", "sakinaka"]))
+    return { text: OFFICE_ADDRESS };
+
+  if (has(t, ["contact", "phone", "number", "call", "mobile", "email", "mail", "whatsapp"]))
+    return { text: CONTACT_INFO };
+
+  if (has(t, ["timing", "hours", "open", "time", "kab"]))
+    return { text: "We are available Monday to Saturday, 10:00 AM to 6:00 PM, at the Sakinaka office." };
+
+  if (has(t, ["fee", "fees", "charge", "cost", "price", "kitna", "paisa", "payment"]))
+    return { text: NOT_SURE, form: true };
+
+  if (has(t, ["language", "hindi", "marathi", "english"]))
+    return { text: "Adv. Rajeshkumar L. Yadav speaks English, Hindi and Marathi." };
+
+  if (has(t, ["experience", "years", "qualification", "notary", "about", "bar council", "who"]))
+    return {
+      text:
+        "Adv. Rajeshkumar L. Yadav is a B.A., LL.B. advocate and Notary (Government of India), enrolled with the Bar Council of Maharashtra & Goa in 2006 with over 19 years of experience. He appears before the Bombay High Court and District Court, Mumbai, and is a member of the Andheri Court Bar Association.",
+    };
+
+  if (has(t, ["consult", "appointment", "book", "meeting", "free"]))
+    return {
+      text:
+        "Your first consultation is free. Please share your name, phone number and a brief description of your issue and we will confirm an appointment.",
+      form: true,
+    };
+
+  if (has(t, ["bail", "criminal", "fir", "arrest", "police", "anticipatory"]))
+    return {
+      text:
+        "Criminal defense, bail and anticipatory bail matters are handled regularly before the Bombay High Court and District Court, Mumbai. Share your details below for a free consultation.",
+      form: true,
+      area: PRACTICE_AREAS[0],
+    };
+
+  if (has(t, ["cheque", "check bounce", "138", "ni act", "negotiable"]))
+    return {
+      text:
+        "Cheque bounce matters under Section 138 of the Negotiable Instruments Act are handled end to end — notice, complaint and trial. Please share your details below.",
+      form: true,
+      area: PRACTICE_AREAS[1],
+    };
+
+  if (has(t, ["divorce", "family", "domestic", "maintenance", "498", "wife", "husband"]))
+    return {
+      text:
+        "Family court matters including domestic violence and divorce are handled with discretion. Kindly share your details below.",
+      form: true,
+      area: PRACTICE_AREAS[2],
+    };
+
+  if (has(t, ["sarfaesi", "drt", "bank", "loan", "recovery", "auction"]))
+    return {
+      text:
+        "Banking and finance matters including SARFAESI Act proceedings and Debt Recovery Tribunal representation are handled regularly. Please share your details.",
+      form: true,
+      area: PRACTICE_AREAS[3],
+    };
+
+  if (has(t, ["document", "registration", "agreement", "affidavit", "attest", "stamp"]))
+    return {
+      text:
+        "Legal documentation, registration matters and notary services are available at the Sakinaka office. Share your details below.",
+      form: true,
+      area: PRACTICE_AREAS[4],
+    };
+
+  if (has(t, ["hi", "hello", "namaste", "hey"]) && t.length < 15)
+    return { text: "Namaste. You can ask me about our practice areas, office address, contact details or book a free consultation." };
+
+  if (has(t, ["thank", "shukriya", "dhanyavad"]))
+    return { text: "You are welcome. We are here whenever you need legal assistance." };
+
+  return { text: NOT_SURE, form: true };
+}
+
 export function LegalChatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
@@ -88,22 +187,11 @@ export function LegalChatbot() {
     if (!text) return;
     push({ role: "user", text });
     setInput("");
-    const lower = text.toLowerCase();
+    const answer = getAnswer(text);
     setTimeout(() => {
-      if (lower.includes("civil")) {
-        push({
-          role: "bot",
-          text:
-            "We do not practice civil law. Please select from our practice areas: Criminal Law, NI Act, Family Court, SARFAESI/DRT, Documentation, or Notary Services.",
-        });
-        return;
-      }
-      push({
-        role: "bot",
-        text:
-          "For detailed legal advice, please book a consultation with Adv. Rajeshkumar L. Yadav. Share your details below and we will get in touch.",
-      });
-      setShowForm(true);
+      push({ role: "bot", text: answer.text });
+      if (answer.area) setForm((f) => ({ ...f, area: answer.area as string }));
+      if (answer.form) setShowForm(true);
     }, 300);
   }
 
@@ -243,12 +331,20 @@ export function LegalChatbot() {
             )}
 
             {done && (
-              <a
-                href="tel:9029678910"
-                className="inline-flex items-center gap-2 rounded-2xl border border-border px-3 py-2 text-xs hover:bg-accent"
-              >
-                <Phone className="h-3.5 w-3.5" /> Call 9029678910
-              </a>
+              <div className="rounded-2xl border border-border p-3">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <CheckCircle2 className="h-4 w-4" /> Inquiry received
+                </div>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Thank you. Our team will contact you within 24 hours. Your first consultation is free.
+                </p>
+                <a
+                  href="tel:9029678910"
+                  className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-border px-3 py-2 text-xs hover:bg-accent"
+                >
+                  <Phone className="h-3.5 w-3.5" /> Call 9029678910
+                </a>
+              </div>
             )}
             <div ref={endRef} />
           </div>

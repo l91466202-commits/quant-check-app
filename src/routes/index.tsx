@@ -133,6 +133,7 @@ function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", area: "", message: "" });
   const [saving, setSaving] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -148,6 +149,7 @@ function Landing() {
         source: "contact_form",
       });
       toast.success("Thank you. Your inquiry has been received — we will contact you within 24 hours.");
+      setSubmitted(true);
       setForm({ name: "", phone: "", email: "", area: "", message: "" });
     } catch {
       toast.error("Could not submit your inquiry. Please call or WhatsApp us directly.");
@@ -194,7 +196,7 @@ function Landing() {
         </div>
         {menuOpen && (
           <nav className="border-t border-border px-4 py-3 lg:hidden">
-            {[...NAV, { href: "#contact", label: "Consult Now" }].map((n) => (
+            {[...NAV, { href: "#contact", label: "Free Consultation" }].map((n) => (
               <a
                 key={n.label}
                 href={n.href}
@@ -257,7 +259,10 @@ function Landing() {
               src={portrait.url}
               alt="Portrait of Adv. Rajeshkumar L. Yadav in advocate robes"
               className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
+              width={800}
+              height={1000}
             />
           </div>
         </div>
@@ -336,10 +341,10 @@ function Landing() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Clients Trust Us */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Why Choose Us</h2>
+          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Why Clients Trust Us</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
               { n: "19+", t: "Years of Experience" },
@@ -354,6 +359,27 @@ function Landing() {
               </div>
             ))}
           </div>
+
+          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+            {REVIEWS.map((r) => (
+              <figure key={r.name} className="rounded-3xl border border-border bg-transparent p-6">
+                <div className="flex gap-1">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star key={s} className="h-3.5 w-3.5 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  “{r.text}”
+                </blockquote>
+                <figcaption className="mt-5">
+                  <div className="text-sm font-semibold">{r.name}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {r.matter}
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -361,24 +387,14 @@ function Landing() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Trust & Recognition</h2>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            <div className="rounded-3xl border border-border bg-transparent p-6 lg:col-span-2">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                As featured on LawRato
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                Adv. Rajeshkumar L. Yadav has answered over 25 legal queries for the public on the LawRato
-                platform, covering criminal defense, cheque bounce, family court and banking matters.
-              </p>
+          <div className="mt-10 rounded-3xl border border-border bg-transparent p-6">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              As featured on LawRato
             </div>
-            <div className="rounded-3xl border border-dashed border-border bg-transparent p-6">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Client testimonials
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Verified client testimonials will be published here.
-              </p>
-            </div>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              Adv. Rajeshkumar L. Yadav has answered over 25 legal queries for the public on the LawRato
+              platform, covering criminal defense, cheque bounce, family court and banking matters.
+            </p>
           </div>
         </div>
       </section>
@@ -488,10 +504,23 @@ function Landing() {
               />
               <button
                 type="submit"
-                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:opacity-90"
+                disabled={saving}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:opacity-90 disabled:opacity-60"
               >
-                Book a Consultation <ArrowRight className="h-4 w-4" />
+                {saving ? "Sending…" : "Book a Free Consultation"} <ArrowRight className="h-4 w-4" />
               </button>
+              {submitted && (
+                <div className="rounded-2xl border border-border bg-transparent p-4 text-sm">
+                  <div className="font-semibold">Thank you — your inquiry has been received.</div>
+                  <p className="mt-1 text-muted-foreground">
+                    Our team will contact you within 24 hours. For anything urgent, call{" "}
+                    <a href="tel:9029678910" className="underline">
+                      9029678910
+                    </a>
+                    .
+                  </p>
+                </div>
+              )}
             </form>
           </div>
         </div>
