@@ -361,24 +361,14 @@ function Landing() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Trust & Recognition</h2>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            <div className="rounded-3xl border border-border bg-transparent p-6 lg:col-span-2">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                As featured on LawRato
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                Adv. Rajeshkumar L. Yadav has answered over 25 legal queries for the public on the LawRato
-                platform, covering criminal defense, cheque bounce, family court and banking matters.
-              </p>
+          <div className="mt-10 rounded-3xl border border-border bg-transparent p-6">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              As featured on LawRato
             </div>
-            <div className="rounded-3xl border border-dashed border-border bg-transparent p-6">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Client testimonials
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Verified client testimonials will be published here.
-              </p>
-            </div>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              Adv. Rajeshkumar L. Yadav has answered over 25 legal queries for the public on the LawRato
+              platform, covering criminal defense, cheque bounce, family court and banking matters.
+            </p>
           </div>
         </div>
       </section>
