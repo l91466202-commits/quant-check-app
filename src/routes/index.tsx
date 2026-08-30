@@ -133,6 +133,7 @@ function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", area: "", message: "" });
   const [saving, setSaving] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -148,6 +149,7 @@ function Landing() {
         source: "contact_form",
       });
       toast.success("Thank you. Your inquiry has been received — we will contact you within 24 hours.");
+      setSubmitted(true);
       setForm({ name: "", phone: "", email: "", area: "", message: "" });
     } catch {
       toast.error("Could not submit your inquiry. Please call or WhatsApp us directly.");
