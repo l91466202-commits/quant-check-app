@@ -488,10 +488,23 @@ function Landing() {
               />
               <button
                 type="submit"
-                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:opacity-90"
+                disabled={saving}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:opacity-90 disabled:opacity-60"
               >
-                Book a Consultation <ArrowRight className="h-4 w-4" />
+                {saving ? "Sending…" : "Book a Free Consultation"} <ArrowRight className="h-4 w-4" />
               </button>
+              {submitted && (
+                <div className="rounded-2xl border border-border bg-transparent p-4 text-sm">
+                  <div className="font-semibold">Thank you — your inquiry has been received.</div>
+                  <p className="mt-1 text-muted-foreground">
+                    Our team will contact you within 24 hours. For anything urgent, call{" "}
+                    <a href="tel:9029678910" className="underline">
+                      9029678910
+                    </a>
+                    .
+                  </p>
+                </div>
+              )}
             </form>
           </div>
         </div>
