@@ -88,22 +88,11 @@ export function LegalChatbot() {
     if (!text) return;
     push({ role: "user", text });
     setInput("");
-    const lower = text.toLowerCase();
+    const answer = getAnswer(text);
     setTimeout(() => {
-      if (lower.includes("civil")) {
-        push({
-          role: "bot",
-          text:
-            "We do not practice civil law. Please select from our practice areas: Criminal Law, NI Act, Family Court, SARFAESI/DRT, Documentation, or Notary Services.",
-        });
-        return;
-      }
-      push({
-        role: "bot",
-        text:
-          "For detailed legal advice, please book a consultation with Adv. Rajeshkumar L. Yadav. Share your details below and we will get in touch.",
-      });
-      setShowForm(true);
+      push({ role: "bot", text: answer.text });
+      if (answer.area) setForm((f) => ({ ...f, area: answer.area as string }));
+      if (answer.form) setShowForm(true);
     }, 300);
   }
 
