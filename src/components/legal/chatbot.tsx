@@ -331,12 +331,20 @@ export function LegalChatbot() {
             )}
 
             {done && (
-              <a
-                href="tel:9029678910"
-                className="inline-flex items-center gap-2 rounded-2xl border border-border px-3 py-2 text-xs hover:bg-accent"
-              >
-                <Phone className="h-3.5 w-3.5" /> Call 9029678910
-              </a>
+              <div className="rounded-2xl border border-border p-3">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <CheckCircle2 className="h-4 w-4" /> Inquiry received
+                </div>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Thank you. Our team will contact you within 24 hours. Your first consultation is free.
+                </p>
+                <a
+                  href="tel:9029678910"
+                  className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-border px-3 py-2 text-xs hover:bg-accent"
+                >
+                  <Phone className="h-3.5 w-3.5" /> Call 9029678910
+                </a>
+              </div>
             )}
             <div ref={endRef} />
           </div>
