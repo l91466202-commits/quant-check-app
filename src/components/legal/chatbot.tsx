@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Phone } from "lucide-react";
+import { MessageCircle, X, Send, Phone, CheckCircle2 } from "lucide-react";
 import { submitLead } from "@/lib/leads";
 
 type Msg = { role: "bot" | "user"; text: string };
