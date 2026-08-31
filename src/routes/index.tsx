@@ -24,6 +24,7 @@ import {
   X,
 } from "lucide-react";
 import portrait from "@/assets/advocate-portrait.jpg.asset.json";
+import highCourt from "@/assets/high-court.jpg";
 import { LegalChatbot } from "@/components/legal/chatbot";
 import { submitLead } from "@/lib/leads";
 import { Star } from "lucide-react";
