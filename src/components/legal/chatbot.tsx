@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Phone, CheckCircle2 } from "lucide-react";
+import { X, Send, Phone, CheckCircle2 } from "lucide-react";
 import { submitLead } from "@/lib/leads";
 import botLogo from "@/assets/bot-logo.png";
 
