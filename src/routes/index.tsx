@@ -212,8 +212,16 @@ function Landing() {
       </header>
 
       {/* Hero */}
-      <section className="border-b border-border bg-foreground text-background">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <section className="relative overflow-hidden border-b border-border bg-foreground text-background">
+        <img
+          src={highCourt}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.14] mix-blend-luminosity grayscale [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
+        />
+        <div className="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
             <p className="inline-block rounded-full border border-background/25 bg-transparent px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-background/70">
               Advocate & Notary · Mumbai
