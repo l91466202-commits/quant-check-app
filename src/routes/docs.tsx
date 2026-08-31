@@ -208,7 +208,7 @@ function DocsPage() {
           <Section id="gaps" title="6. Known gaps">
             <p>Things to be aware of before running this in production:</p>
             <ul className="list-disc space-y-2 pl-6">
-              <li><strong className="text-foreground">Email verification is disabled</strong> for faster testing (auto-confirm on). Turn it back on before production.</li>
+              <li><strong className="text-foreground">Email verification is enabled.</strong> New signups must confirm their email address before they can sign in and accept team invites.</li>
               <li><strong className="text-foreground">Password reset flow is not built.</strong> Only the signup / login forms exist.</li>
               <li><strong className="text-foreground">Team invites don't send email.</strong> Creating an invite generates a single-use link (<code className="rounded bg-muted px-1 py-0.5 text-foreground">/accept-invite?token=…</code>) that you copy and send to the invitee yourself. It expires after 7 days, only works for the address it was issued to, and is redeemed after that person signs in with a confirmed email.</li>
               <li><strong className="text-foreground">No audit log</strong> of edits, deletes, or member changes.</li>
