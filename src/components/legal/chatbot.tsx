@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Phone, CheckCircle2 } from "lucide-react";
+import { X, Send, Phone, CheckCircle2 } from "lucide-react";
 import { submitLead } from "@/lib/leads";
+import botLogo from "@/assets/bot-logo.png";
 
 type Msg = { role: "bot" | "user"; text: string };
 
@@ -232,18 +233,23 @@ export function LegalChatbot() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open Legal Assistant chat"
-          className="grid h-14 w-14 place-items-center rounded-full border border-border bg-foreground/90 text-background shadow-lg backdrop-blur-md transition hover:opacity-90"
+          className="grid h-14 w-14 place-items-center overflow-hidden rounded-full border border-border bg-foreground/90 text-background shadow-lg backdrop-blur-md transition hover:opacity-90"
         >
-          <MessageCircle className="h-6 w-6" />
+          <img src={botLogo} alt="Legal Assistant" className="h-9 w-9 object-contain" />
         </button>
       )}
 
       {open && (
         <div className="flex h-[70vh] max-h-[560px] w-[min(92vw,22rem)] flex-col overflow-hidden rounded-3xl border border-border bg-background/80 shadow-2xl backdrop-blur-xl">
           <div className="flex items-center justify-between gap-2 border-b border-border px-4 py-3">
-            <div>
-              <div className="text-sm font-bold tracking-tight">Legal Assistant</div>
-              <div className="text-[11px] text-muted-foreground">Adv. Rajeshkumar L. Yadav</div>
+            <div className="flex min-w-0 items-center gap-2.5">
+              <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-border bg-foreground/90">
+                <img src={botLogo} alt="Legal Assistant logo" className="h-6 w-6 object-contain" />
+              </span>
+              <div>
+                <div className="text-sm font-bold tracking-tight">Legal Assistant</div>
+                <div className="text-[11px] text-muted-foreground">Adv. Rajeshkumar L. Yadav</div>
+              </div>
             </div>
             <button
               onClick={() => setOpen(false)}
