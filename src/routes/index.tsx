@@ -23,8 +23,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import portrait from "@/assets/advocate-portrait.jpg.asset.json";
-import highCourt from "@/assets/high-court.jpg";
+const portraitUrl = "/images/advocate-portrait.jpg";
+const highCourt = "/images/high-court.jpg";
 import { LegalChatbot } from "@/components/legal/chatbot";
 import { submitLead } from "@/lib/leads";
 import { Star } from "lucide-react";
@@ -265,7 +265,7 @@ function Landing() {
           </div>
           <div className="rounded-[2rem] border border-background/20 bg-transparent p-3">
             <img
-              src={portrait.url}
+              src={portraitUrl}
               alt="Portrait of Adv. Rajeshkumar L. Yadav in advocate robes"
               className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top"
               loading="eager"
@@ -309,7 +309,7 @@ function Landing() {
             </div>
             <div className="rounded-3xl border border-border bg-transparent p-3">
               <img
-                src={portrait.url}
+                src={portraitUrl}
                 alt="Adv. Rajeshkumar L. Yadav, Advocate & Notary"
                 className="aspect-[4/5] w-full rounded-[1.25rem] object-cover object-top"
                 loading="lazy"

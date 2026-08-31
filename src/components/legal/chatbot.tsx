@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send, Phone, CheckCircle2 } from "lucide-react";
 import { submitLead } from "@/lib/leads";
-import botLogo from "@/assets/bot-logo.png";
+const botLogo = "/images/bot-logo.png";
 
 type Msg = { role: "bot" | "user"; text: string };
 
