@@ -12,6 +12,7 @@ const PRACTICE_AREAS = [
   "Banking & Finance (SARFAESI / DRT)",
   "Documentation & Registration",
   "Notary Services",
+  "Arbitration and Alternate Disputes Act",
 ];
 
 const QUICK_REPLIES: { label: string; area: string; reply: string }[] = [
@@ -46,6 +47,12 @@ const QUICK_REPLIES: { label: string; area: string; reply: string }[] = [
       "Legal documentation, registration matters and notary services (Notary, Government of India) are available at the Sakinaka office. Share your details below.",
   },
   {
+    label: "I need arbitration / alternate dispute resolution",
+    area: PRACTICE_AREAS[6],
+    reply:
+      "Arbitration and alternate dispute resolution matters under the Arbitration and Conciliation Act are handled, including appointment of arbitrators, interim relief and enforcement of awards. Share your details below.",
+  },
+  {
     label: "Book a free consultation",
     area: "",
     reply:
@@ -72,7 +79,7 @@ function getAnswer(raw: string): Answer {
   if (has(t, ["civil"]))
     return {
       text:
-        "We do not practice civil law. Please select from our practice areas: Criminal Law, NI Act, Family Court, SARFAESI/DRT, Documentation, or Notary Services.",
+        "We do not practice civil law. Please select from our practice areas: Criminal Law, NI Act, Family Court, SARFAESI/DRT, Documentation, Notary Services, or Arbitration and Alternate Disputes Act.",
     };
 
   if (has(t, ["address", "office", "location", "where", "kaha", "kahan", "pata", "reach", "map", "sakinaka"]))
@@ -141,6 +148,14 @@ function getAnswer(raw: string): Answer {
         "Legal documentation, registration matters and notary services are available at the Sakinaka office. Share your details below.",
       form: true,
       area: PRACTICE_AREAS[4],
+    };
+
+  if (has(t, ["arbitration", "arbitrator", "alternate dispute", "adr", "conciliation", "mediation", "award", "section 34", "section 9", "section 11", "arbitral"]))
+    return {
+      text:
+        "Arbitration and alternate dispute resolution matters under the Arbitration and Conciliation Act are handled, including appointment of arbitrators, interim relief and enforcement of awards. Please share your details below.",
+      form: true,
+      area: PRACTICE_AREAS[6],
     };
 
   if (has(t, ["hi", "hello", "namaste", "hey"]) && t.length < 15)

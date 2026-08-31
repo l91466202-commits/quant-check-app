@@ -8,6 +8,7 @@ import {
   Landmark,
   FilePen,
   Stamp,
+  Handshake,
   Phone,
   Mail,
   MapPin,
@@ -31,7 +32,7 @@ import { Star } from "lucide-react";
 
 const TITLE = "Adv. Rajeshkumar L. Yadav — Advocate & Notary, Mumbai";
 const DESC =
-  "Advocate & Notary (Govt. of India), B.A., LL.B. with 19+ years of practice in criminal law, cheque bounce (S.138), family court, SARFAESI/DRT, documentation and notary services in Mumbai.";
+  "Advocate & Notary (Govt. of India), B.A., LL.B. with 19+ years of practice in criminal law, cheque bounce (S.138), family court, SARFAESI/DRT, documentation, notary and arbitration matters in Mumbai.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -79,6 +80,11 @@ const PRACTICE_AREAS = [
     icon: Stamp,
     title: "Notary Services",
     desc: "Notary work as a Notary appointed by the Government of India.",
+  },
+  {
+    icon: Handshake,
+    title: "Arbitration and Alternate Disputes Act",
+    desc: "Arbitration and alternate dispute resolution under the Arbitration and Conciliation Act, including interim relief and award enforcement.",
   },
 ];
 
@@ -330,8 +336,8 @@ function Landing() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Practice Areas</h2>
           <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Focused representation across criminal, negotiable instruments, family court, banking, documentation
-            and notary matters.
+            Focused representation across criminal, negotiable instruments, family court, banking, documentation,
+            notary and arbitration matters.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PRACTICE_AREAS.map((p) => (
@@ -402,7 +408,7 @@ function Landing() {
             </div>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
               Adv. Rajeshkumar L. Yadav has answered over 25 legal queries for the public on the LawRato
-              platform, covering criminal defense, cheque bounce, family court and banking matters.
+              platform, covering criminal defense, cheque bounce, family court, banking and arbitration matters.
             </p>
           </div>
         </div>
