@@ -228,8 +228,21 @@ export function LegalChatbot() {
       push({ role: "user", text: `${form.name} — ${form.phone}${form.area ? ` — ${form.area}` : ""}` });
       setShowForm(false);
       setDone(true);
+
+      // Forward the inquiry to WhatsApp so the advocate receives it instantly.
+      const waText = [
+        "New Inquiry (Legal Assistant)",
+        `Name: ${form.name}`,
+        `Phone: ${form.phone}`,
+        form.area ? `Practice Area: ${form.area}` : "",
+        form.issue ? `Issue: ${form.issue}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      window.open(`https://wa.me/919029678910?text=${encodeURIComponent(waText)}`, "_blank", "noopener");
+
       setTimeout(
-        () => push({ role: "bot", text: "Thank you. Your inquiry has been received — our team will contact you within 24 hours." }),
+        () => push({ role: "bot", text: "Thank you. Your inquiry has been received — our team will contact you within 24 hours. WhatsApp is opening with your details; just press Send there too." }),
         300,
       );
     } catch {
