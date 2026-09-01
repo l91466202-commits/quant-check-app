@@ -227,91 +227,58 @@ function Landing() {
           decoding="async"
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.14] mix-blend-luminosity grayscale [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
         />
-        <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-          <p className="inline-block rounded-full border border-background/25 bg-transparent px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-background/70">
-            Advocate & Notary · Mumbai
-          </p>
-
-          <div className="mt-6 grid gap-8 lg:grid-cols-[280px_1fr] lg:items-center">
-            {/* Smaller portrait */}
-            <div className="mx-auto w-full max-w-[240px] rounded-[2rem] border border-background/20 bg-transparent p-2.5 sm:max-w-[280px] lg:mx-0 lg:max-w-none">
-              <img
-                src={portraitUrl}
-                alt="Portrait of Adv. Rajeshkumar L. Yadav in advocate robes"
-                className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top"
-                loading="eager"
-                decoding="async"
-                width={560}
-                height={700}
-              />
+        <div className="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <p className="inline-block rounded-full border border-background/25 bg-transparent px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-background/70">
+              Advocate & Notary · Mumbai
+            </p>
+            <h1 className="mt-6 text-4xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              Adv. Rajeshkumar
+              <br />
+              L. Yadav
+            </h1>
+            <p className="mt-6 max-w-xl text-sm text-background/75 sm:text-lg">
+              Advocate & Notary — Government of India | B.A., LL.B. | 19+ Years of Experience
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#contact"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground hover:opacity-90"
+              >
+                Book a Free Consultation <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="tel:9029678910"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-background/40 bg-transparent px-6 py-3 text-sm font-medium hover:bg-background/10"
+              >
+                <Phone className="h-4 w-4" /> Call Now
+              </a>
             </div>
-
-            {/* Bold credentials */}
-            <div>
-              <h1 className="text-3xl font-black leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
-                Adv. Rajeshkumar
-                <br />
-                L. Yadav
-              </h1>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {[
-                  { label: "Experience", value: "19+ Years", icon: Award },
-                  { label: "Qualification", value: "B.A., LL.B.", icon: ShieldCheck },
-                  { label: "Notary", value: "Govt. of India", icon: Stamp },
-                  { label: "Enrolled", value: "Bar Council, 2006", icon: Landmark },
-                ].map((c) => (
-                  <div
-                    key={c.label}
-                    className="rounded-2xl border border-background/20 bg-transparent p-4"
-                  >
-                    <c.icon className="h-4 w-4 text-background/70" />
-                    <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-background/60">
-                      {c.label}
-                    </div>
-                    <div className="mt-1 text-lg font-black leading-tight tracking-tight sm:text-xl">
-                      {c.value}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-6 max-w-2xl text-sm text-background/75 sm:text-base">
-                Advocate & Notary — Government of India. Practising before the Bombay High Court and
-                District Court, Mumbai. Member, Andheri Court Bar Association. Fluent in English, Hindi
-                and Marathi.
-              </p>
-
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#contact"
-                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground hover:opacity-90"
+            <div className="mt-10 flex flex-wrap gap-3">
+              {[
+                { icon: Stamp, label: "Notary, Govt. of India" },
+                { icon: ShieldCheck, label: "Bar Council of Maharashtra & Goa" },
+                { icon: Award, label: "Andheri Court Bar Association" },
+              ].map((b) => (
+                <span
+                  key={b.label}
+                  className="inline-flex items-center gap-2 rounded-full border border-background/25 bg-transparent px-4 py-2 text-xs text-background/80"
                 >
-                  Book a Free Consultation <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="tel:9029678910"
-                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-background/40 bg-transparent px-6 py-3 text-sm font-medium hover:bg-background/10"
-                >
-                  <Phone className="h-4 w-4" /> Call Now
-                </a>
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                {[
-                  { icon: Stamp, label: "Notary, Govt. of India" },
-                  { icon: ShieldCheck, label: "Bar Council of Maharashtra & Goa" },
-                  { icon: Award, label: "Andheri Court Bar Association" },
-                ].map((b) => (
-                  <span
-                    key={b.label}
-                    className="inline-flex items-center gap-2 rounded-full border border-background/25 bg-transparent px-4 py-2 text-xs text-background/80"
-                  >
-                    <b.icon className="h-3.5 w-3.5" /> {b.label}
-                  </span>
-                ))}
-              </div>
+                  <b.icon className="h-3.5 w-3.5" /> {b.label}
+                </span>
+              ))}
             </div>
+          </div>
+          <div className="rounded-[2rem] border border-background/20 bg-transparent p-3">
+            <img
+              src={portraitUrl}
+              alt="Portrait of Adv. Rajeshkumar L. Yadav in advocate robes"
+              className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top"
+              loading="eager"
+              decoding="async"
+              width={800}
+              height={1000}
+            />
           </div>
         </div>
       </section>
