@@ -54,7 +54,7 @@ const PRACTICE_AREAS = [
   {
     icon: Scale,
     title: "Criminal Law",
-    desc: "Criminal defense, bail and anticipatory bail matters before the Bombay High Court and District Court, Mumbai.",
+    desc: "Criminal defense, bail and anticipatory bail matters before the Bombay High Court, Sessions Court and Magistrate Court, Mumbai.",
   },
   {
     icon: FileText,
@@ -298,7 +298,7 @@ function Landing() {
                 {[
                   { icon: Award, t: "Credentials", d: "B.A., LL.B. · Notary, Govt. of India" },
                   { icon: ShieldCheck, t: "Enrolment", d: "Bar Council of Maharashtra & Goa, 2008" },
-                  { icon: Landmark, t: "Courts Practiced", d: "Bombay High Court · District Court, Mumbai" },
+                  { icon: Landmark, t: "Courts Practiced", d: "Bombay High Court · Sessions Court · Family Court · Magistrate Court · DRT & SARFAESI" },
                   { icon: Languages, t: "Languages", d: "English · Hindi · Marathi" },
                 ].map((c) => (
                   <div key={c.t} className="rounded-2xl border border-border bg-transparent p-4">
