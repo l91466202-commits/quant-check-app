@@ -25,7 +25,8 @@ import {
   X,
 } from "lucide-react";
 const portraitUrl = "/images/advocate-portrait.jpg";
-const highCourt = "/images/high-court.jpg";
+import courtHeroAsset from "@/assets/court-hero.png.asset.json";
+const highCourt = courtHeroAsset.url;
 import { LegalChatbot } from "@/components/legal/chatbot";
 import { submitLead } from "@/lib/leads";
 import { Star } from "lucide-react";
@@ -225,7 +226,7 @@ function Landing() {
           aria-hidden="true"
           loading="eager"
           decoding="async"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.14] mix-blend-luminosity grayscale [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.16] mix-blend-screen [mask-image:linear-gradient(to_bottom,black_50%,transparent_95%)]"
         />
         <div className="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
