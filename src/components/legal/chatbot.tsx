@@ -20,7 +20,7 @@ const QUICK_REPLIES: { label: string; area: string; reply: string }[] = [
     label: "I need help with a criminal case / bail",
     area: PRACTICE_AREAS[0],
     reply:
-      "Adv. Rajeshkumar L. Yadav regularly appears in criminal defense, bail and anticipatory bail matters before the Bombay High Court and District Court, Mumbai. Share a few details and we will arrange a consultation.",
+      "Adv. Rajeshkumar L. Yadav regularly appears in criminal defense, bail and anticipatory bail matters before the Bombay High Court, Sessions Court and Magistrate Court, Mumbai. Share a few details and we will arrange a consultation.",
   },
   {
     label: "I have a cheque bounce matter",
@@ -100,7 +100,7 @@ function getAnswer(raw: string): Answer {
   if (has(t, ["experience", "years", "qualification", "notary", "about", "bar council", "who"]))
     return {
       text:
-        "Adv. Rajeshkumar L. Yadav is a B.A., LL.B. advocate and Notary (Government of India), enrolled with the Bar Council of Maharashtra & Goa in 2008 with over 18 years of experience. He appears before the Bombay High Court and District Court, Mumbai.",
+        "Adv. Rajeshkumar L. Yadav is a B.A., LL.B. advocate and Notary (Government of India), enrolled with the Bar Council of Maharashtra & Goa in 2008 with over 18 years of experience. He appears before the Bombay High Court, Sessions Court, Family Court, Magistrate Court, and DRT / SARFAESI forums in Mumbai.",
     };
 
   if (has(t, ["consult", "appointment", "book", "meeting", "free"]))
@@ -113,7 +113,7 @@ function getAnswer(raw: string): Answer {
   if (has(t, ["bail", "criminal", "fir", "arrest", "police", "anticipatory"]))
     return {
       text:
-        "Criminal defense, bail and anticipatory bail matters are handled regularly before the Bombay High Court and District Court, Mumbai. Share your details below for a free consultation.",
+        "Criminal defense, bail and anticipatory bail matters are handled regularly before the Bombay High Court, Sessions Court and Magistrate Court, Mumbai. Share your details below for a free consultation.",
       form: true,
       area: PRACTICE_AREAS[0],
     };
