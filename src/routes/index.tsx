@@ -32,7 +32,7 @@ import { Star } from "lucide-react";
 
 const TITLE = "Adv. Rajeshkumar L. Yadav — Advocate & Notary, Mumbai";
 const DESC =
-  "Advocate & Notary (Govt. of India), B.A., LL.B. with 19+ years of practice in criminal law, cheque bounce (S.138), family court, SARFAESI/DRT, documentation, notary and arbitration matters in Mumbai.";
+  "Advocate & Notary (Govt. of India), B.A., LL.B. with 18+ years of practice in criminal law, cheque bounce (S.138), family court, SARFAESI/DRT, documentation, notary and arbitration matters in Mumbai.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,7 +115,6 @@ const SCHEMA = {
   areaServed: "Mumbai",
   knowsLanguage: ["English", "Hindi", "Marathi"],
   openingHours: "Mo-Sa 10:00-18:00",
-  memberOf: "Andheri Court Bar Association",
 };
 
 const REVIEWS = [
@@ -238,7 +237,7 @@ function Landing() {
               L. Yadav
             </h1>
             <p className="mt-6 max-w-xl text-sm text-background/75 sm:text-lg">
-              Advocate & Notary — Government of India | B.A., LL.B. | 19+ Years of Experience
+              Advocate & Notary — Government of India | B.A., LL.B. | 18+ Years of Experience
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -258,7 +257,6 @@ function Landing() {
               {[
                 { icon: Stamp, label: "Notary, Govt. of India" },
                 { icon: ShieldCheck, label: "Bar Council of Maharashtra & Goa" },
-                { icon: Award, label: "Andheri Court Bar Association" },
               ].map((b) => (
                 <span
                   key={b.label}
@@ -291,7 +289,7 @@ function Landing() {
             <div className="rounded-3xl border border-border bg-transparent p-6 sm:p-8">
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                 Adv. Rajeshkumar L. Yadav is a seasoned legal practitioner enrolled with the Bar Council of
-                Maharashtra & Goa in 2006, with over 19 years of standing at the Bar. He is also a Notary
+                Maharashtra & Goa in 2008, with over 18 years of standing at the Bar. He is also a Notary
                 appointed by the Government of India. His practice spans both contentious courtroom work and
                 non-contentious advisory matters, built on ethical conduct, professional diligence and
                 result-oriented strategies. He has answered over 25 legal queries on the LawRato platform.
@@ -299,7 +297,7 @@ function Landing() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {[
                   { icon: Award, t: "Credentials", d: "B.A., LL.B. · Notary, Govt. of India" },
-                  { icon: ShieldCheck, t: "Enrolment", d: "Bar Council of Maharashtra & Goa, 2006" },
+                  { icon: ShieldCheck, t: "Enrolment", d: "Bar Council of Maharashtra & Goa, 2008" },
                   { icon: Landmark, t: "Courts Practiced", d: "Bombay High Court · District Court, Mumbai" },
                   { icon: Languages, t: "Languages", d: "English · Hindi · Marathi" },
                 ].map((c) => (
@@ -323,7 +321,7 @@ function Landing() {
               <div className="p-4">
                 <div className="text-lg font-bold tracking-tight">Adv. Rajeshkumar L. Yadav</div>
                 <div className="text-sm text-muted-foreground">
-                  Member, Andheri Court Bar Association
+                  Advocate & Notary, Government of India
                 </div>
               </div>
             </div>
@@ -362,7 +360,7 @@ function Landing() {
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Why Clients Trust Us</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
-              { n: "19+", t: "Years of Experience" },
+              { n: "18+", t: "Years of Experience" },
               { n: "01", t: "Ethical & Professional Approach" },
               { n: "02", t: "Result-Oriented Strategies" },
               { n: "03", t: "Courtroom & Advisory Expertise" },
