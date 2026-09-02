@@ -25,7 +25,8 @@ import {
   X,
 } from "lucide-react";
 const portraitUrl = "/images/advocate-portrait.jpg";
-const highCourt = "/images/high-court.jpg";
+import courtHeroAsset from "@/assets/court-hero.png.asset.json";
+const highCourt = courtHeroAsset.url;
 import { LegalChatbot } from "@/components/legal/chatbot";
 import { submitLead } from "@/lib/leads";
 import { Star } from "lucide-react";
