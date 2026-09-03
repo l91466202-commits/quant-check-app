@@ -297,7 +297,7 @@ function Landing() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {[
                   { icon: Award, t: "Credentials", d: "B.A., LL.B. · Notary, Govt. of India" },
-                  { icon: ShieldCheck, t: "Enrolment", d: "Bar Council of Maharashtra & Goa, 2008" },
+                  { icon: ShieldCheck, t: "Enrolment", d: "Bar Council of Maharashtra & Goa, 2008 · Reg. MAH/1146/2008" },
                   { icon: Landmark, t: "Courts Practiced", d: "Bombay High Court · Sessions Court · Family Court · Magistrate Court · DRT & SARFAESI" },
                   { icon: Languages, t: "Languages", d: "English · Hindi · Marathi" },
                 ].map((c) => (
