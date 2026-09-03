@@ -100,7 +100,7 @@ function getAnswer(raw: string): Answer {
   if (has(t, ["experience", "years", "qualification", "notary", "about", "bar council", "who"]))
     return {
       text:
-        "Adv. Rajeshkumar L. Yadav is a B.A., LL.B. advocate and Notary (Government of India), enrolled with the Bar Council of Maharashtra & Goa in 2008 with over 18 years of experience. He appears before the Bombay High Court, Sessions Court, Family Court, Magistrate Court, and DRT / SARFAESI forums in Mumbai.",
+        "Adv. Rajeshkumar L. Yadav is a B.A., LL.B. advocate and Notary (Government of India), enrolled with the Bar Council of Maharashtra & Goa in 2008 (Registration No. MAH/1146/2008) with over 18 years of experience. He appears before the Bombay High Court, Sessions Court, Family Court, Magistrate Court, and DRT / SARFAESI forums in Mumbai.",
     };
 
   if (has(t, ["consult", "appointment", "book", "meeting", "free"]))
