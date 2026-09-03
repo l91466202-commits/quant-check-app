@@ -281,8 +281,8 @@ function Landing() {
             </div>
           </div>
           <div
-            className="hero-in animate-float-slow rounded-[2rem] border border-background/20 bg-transparent p-3"
-            style={{ animationDelay: "200ms, 0s" }}
+            className="hero-in rounded-[2rem] border border-background/20 bg-transparent p-3"
+            style={{ animationDelay: "200ms" }}
           >
             <img
               src={portraitUrl}
