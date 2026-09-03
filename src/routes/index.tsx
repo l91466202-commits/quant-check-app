@@ -433,16 +433,18 @@ function Landing() {
               Adv. Rajeshkumar L. Yadav has answered over 25 legal queries for the public on the LawRato
               platform, covering criminal defense, cheque bounce, family court, banking and arbitration matters.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Contact */}
       <section id="contact">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Contact</h2>
+          <Reveal>
+            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Contact</h2>
+          </Reveal>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="space-y-4">
+            <Reveal className="space-y-4">
               <div className="rounded-3xl border border-border bg-transparent p-6">
                 <div className="flex gap-3">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
