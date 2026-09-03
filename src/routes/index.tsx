@@ -24,7 +24,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-const portraitUrl = "/images/advocate-portrait.jpg";
+const portraitUrl = "/images/advocate-portrait.png";
 const highCourt = "/images/court-hero.png";
 import { LegalChatbot } from "@/components/legal/chatbot";
 import { submitLead } from "@/lib/leads";
