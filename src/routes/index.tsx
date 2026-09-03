@@ -300,9 +300,11 @@ function Landing() {
       {/* About */}
       <section id="about" className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">About</h2>
+          <Reveal>
+            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">About</h2>
+          </Reveal>
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="rounded-3xl border border-border bg-transparent p-6 sm:p-8">
+            <Reveal className="card-hover rounded-3xl border border-border bg-transparent p-6 sm:p-8">
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                 Adv. Rajeshkumar L. Yadav is a seasoned legal practitioner enrolled with the Bar Council of
                 Maharashtra & Goa in 2008, with over 18 years of standing at the Bar. He is also a Notary
@@ -317,7 +319,7 @@ function Landing() {
                   { icon: Landmark, t: "Courts Practiced", d: "Bombay High Court · Sessions Court · Family Court · Magistrate Court · DRT & SARFAESI" },
                   { icon: Languages, t: "Languages", d: "English · Hindi · Marathi" },
                 ].map((c) => (
-                  <div key={c.t} className="rounded-2xl border border-border bg-transparent p-4">
+                  <div key={c.t} className="card-hover rounded-2xl border border-border bg-transparent p-4">
                     <c.icon className="h-4 w-4" />
                     <div className="mt-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                       {c.t}
@@ -326,8 +328,8 @@ function Landing() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="rounded-3xl border border-border bg-transparent p-3">
+            </Reveal>
+            <Reveal delay={120} className="card-hover rounded-3xl border border-border bg-transparent p-3">
               <img
                 src={portraitUrl}
                 alt="Adv. Rajeshkumar L. Yadav, Advocate & Notary"
@@ -340,7 +342,7 @@ function Landing() {
                   Advocate & Notary, Government of India
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -348,23 +350,26 @@ function Landing() {
       {/* Practice Areas */}
       <section id="practice" className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Practice Areas</h2>
-          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Focused representation across criminal, negotiable instruments, family court, banking, documentation,
-            notary and arbitration matters.
-          </p>
+          <Reveal>
+            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Practice Areas</h2>
+            <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+              Focused representation across criminal, negotiable instruments, family court, banking, documentation,
+              notary and arbitration matters.
+            </p>
+          </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {PRACTICE_AREAS.map((p) => (
-              <div
+            {PRACTICE_AREAS.map((p, i) => (
+              <Reveal
                 key={p.title}
-                className="rounded-3xl border border-border bg-transparent p-6 transition hover:bg-accent/40"
+                delay={i * 80}
+                className="card-hover rounded-3xl border border-border bg-transparent p-6 hover:bg-accent/40"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
                   <p.icon className="h-4 w-4" />
                 </span>
                 <h3 className="mt-5 text-lg font-bold tracking-tight">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
