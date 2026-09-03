@@ -378,7 +378,9 @@ function Landing() {
       {/* Why Clients Trust Us */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Why Clients Trust Us</h2>
+          <Reveal>
+            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Why Clients Trust Us</h2>
+          </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
               { n: "18+", t: "Years of Experience" },
@@ -386,17 +388,17 @@ function Landing() {
               { n: "02", t: "Result-Oriented Strategies" },
               { n: "03", t: "Courtroom & Advisory Expertise" },
               { n: "25+", t: "Legal Queries Answered on LawRato" },
-            ].map((w) => (
-              <div key={w.t} className="rounded-3xl border border-border bg-transparent p-6">
+            ].map((w, i) => (
+              <Reveal key={w.t} delay={i * 70} className="card-hover rounded-3xl border border-border bg-transparent p-6">
                 <div className="text-3xl font-black tracking-tight">{w.n}</div>
                 <div className="mt-2 text-sm text-muted-foreground">{w.t}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
           <div className="mt-4 grid gap-4 lg:grid-cols-3">
-            {REVIEWS.map((r) => (
-              <figure key={r.name} className="rounded-3xl border border-border bg-transparent p-6">
+            {REVIEWS.map((r, i) => (
+              <Reveal key={r.name} delay={i * 100} as="figure" className="card-hover rounded-3xl border border-border bg-transparent p-6">
                 <div className="flex gap-1">
                   {[0, 1, 2, 3, 4].map((s) => (
                     <Star key={s} className="h-3.5 w-3.5 fill-current" />
@@ -411,7 +413,7 @@ function Landing() {
                     {r.matter}
                   </div>
                 </figcaption>
-              </figure>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -420,8 +422,10 @@ function Landing() {
       {/* Trust */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Trust & Recognition</h2>
-          <div className="mt-10 rounded-3xl border border-border bg-transparent p-6">
+          <Reveal>
+            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Trust & Recognition</h2>
+          </Reveal>
+          <Reveal delay={100} className="card-hover mt-10 rounded-3xl border border-border bg-transparent p-6">
             <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
               As featured on LawRato
             </div>
