@@ -494,9 +494,10 @@ function Landing() {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-            </div>
+            </Reveal>
 
-            <form onSubmit={submit} className="space-y-3 rounded-3xl border border-border bg-transparent p-6">
+            <Reveal delay={120}>
+            <form onSubmit={submit} className="card-hover space-y-3 rounded-3xl border border-border bg-transparent p-6">
               <div className="text-lg font-bold tracking-tight">Book a Consultation</div>
               <input
                 required
@@ -562,6 +563,7 @@ function Landing() {
                 </div>
               )}
             </form>
+            </Reveal>
           </div>
         </div>
       </section>
