@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {
   Scale,
@@ -136,6 +136,41 @@ const REVIEWS = [
   },
 ];
 
+function NameIntro() {
+  const [show, setShow] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !window.sessionStorage.getItem("intro_seen");
+  });
+
+  useEffect(() => {
+    if (!show) return;
+    window.sessionStorage.setItem("intro_seen", "1");
+    const t = window.setTimeout(() => setShow(false), 3400);
+    return () => window.clearTimeout(t);
+  }, [show]);
+
+  if (!show) return null;
+
+  return (
+    <div className="intro-overlay" aria-hidden="true">
+      <div className="intro-scale-icon">
+        <Scale className="h-10 w-10" strokeWidth={1.25} />
+      </div>
+      <div className="intro-name font-display italic">
+        {"Adv. Rajeshkumar L. Yadav".split(" ").map((word, i) => (
+          <span key={i} className="intro-word" style={{ animationDelay: `${0.15 + i * 0.18}s` }}>
+            {word}
+          </span>
+        ))}
+      </div>
+      <div className="intro-rule" />
+      <div className="intro-tag" style={{ animationDelay: "1s" }}>
+        Advocate & Notary — Government of India
+      </div>
+    </div>
+  );
+}
+
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", area: "", message: "" });
@@ -168,6 +203,7 @@ function Landing() {
   return (
     <div id="home" className="min-h-screen scroll-smooth bg-background text-foreground">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA) }} />
+      <NameIntro />
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur-xl">
@@ -176,7 +212,7 @@ function Landing() {
             <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border">
               <Scale className="h-4 w-4" />
             </span>
-            <span className="truncate text-sm font-bold tracking-tight sm:text-base">
+            <span className="truncate font-display text-sm font-bold italic tracking-tight sm:text-base">
               Adv. Rajeshkumar L. Yadav
             </span>
           </a>
