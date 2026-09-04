@@ -188,6 +188,11 @@
   text-align: center;
 }
 
+.intro-skip .intro-overlay {
+  display: none;
+  animation: none;
+}
+
 .intro-scale-icon {
   opacity: 0;
   animation: intro-scale-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;

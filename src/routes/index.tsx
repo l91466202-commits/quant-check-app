@@ -137,17 +137,13 @@ const REVIEWS = [
 ];
 
 function NameIntro() {
-  const [show, setShow] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !window.sessionStorage.getItem("intro_seen");
-  });
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    if (!show) return;
     window.sessionStorage.setItem("intro_seen", "1");
     const t = window.setTimeout(() => setShow(false), 3400);
     return () => window.clearTimeout(t);
-  }, [show]);
+  }, []);
 
   if (!show) return null;
 
