@@ -311,6 +311,10 @@
   .btn-press {
     transition: none;
   }
+  .intro-overlay {
+    animation: none;
+    display: none;
+  }
 }
 
 @layer base {
