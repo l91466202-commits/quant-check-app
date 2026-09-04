@@ -136,6 +136,41 @@ const REVIEWS = [
   },
 ];
 
+function NameIntro() {
+  const [show, setShow] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !window.sessionStorage.getItem("intro_seen");
+  });
+
+  useEffect(() => {
+    if (!show) return;
+    window.sessionStorage.setItem("intro_seen", "1");
+    const t = window.setTimeout(() => setShow(false), 3400);
+    return () => window.clearTimeout(t);
+  }, [show]);
+
+  if (!show) return null;
+
+  return (
+    <div className="intro-overlay" aria-hidden="true">
+      <div className="intro-scale-icon">
+        <Scale className="h-10 w-10" strokeWidth={1.25} />
+      </div>
+      <div className="intro-name font-display italic">
+        {"Adv. Rajeshkumar L. Yadav".split(" ").map((word, i) => (
+          <span key={i} className="intro-word" style={{ animationDelay: `${0.15 + i * 0.18}s` }}>
+            {word}
+          </span>
+        ))}
+      </div>
+      <div className="intro-rule" />
+      <div className="intro-tag" style={{ animationDelay: "1s" }}>
+        Advocate & Notary — Government of India
+      </div>
+    </div>
+  );
+}
+
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", area: "", message: "" });
