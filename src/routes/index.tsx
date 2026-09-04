@@ -203,6 +203,7 @@ function Landing() {
   return (
     <div id="home" className="min-h-screen scroll-smooth bg-background text-foreground">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA) }} />
+      <NameIntro />
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur-xl">
