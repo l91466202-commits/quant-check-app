@@ -87,6 +87,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
 
     ],
+    scripts: [
+      {
+        children: `try{if(sessionStorage.getItem("intro_seen")){document.documentElement.classList.add("intro-skip")}}catch(e){}`,
+      },
+    ],
     links: [
       { rel: "stylesheet", href: appCss },
       {
