@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {
   Scale,
@@ -176,7 +176,7 @@ function Landing() {
             <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border">
               <Scale className="h-4 w-4" />
             </span>
-            <span className="truncate text-sm font-bold tracking-tight sm:text-base">
+            <span className="truncate font-display text-sm font-bold italic tracking-tight sm:text-base">
               Adv. Rajeshkumar L. Yadav
             </span>
           </a>
