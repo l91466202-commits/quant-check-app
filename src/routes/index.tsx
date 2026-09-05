@@ -629,6 +629,12 @@ function Landing() {
           <p className="mt-8 rounded-2xl border border-dashed border-border p-4 text-xs text-muted-foreground">
             Disclaimer: This website is for informational purposes only and does not constitute legal advice.
           </p>
+          <p className="mt-6 text-center text-xs text-muted-foreground">
+            Developed by Luma Labs. For business and enquire contact email us on{" "}
+            <a href="mailto:lumalabs339@gmail.com" className="underline hover:text-foreground">
+              lumalabs339@gmail.com
+            </a>
+          </p>
         </div>
       </footer>
 
