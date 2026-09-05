@@ -31,22 +31,32 @@ import { Reveal } from "@/components/legal/reveal";
 import { submitLead } from "@/lib/leads";
 import { Star } from "lucide-react";
 
-const TITLE = "Adv. Rajeshkumar L. Yadav — Advocate & Notary, Mumbai";
+const SITE_URL = "https://quant-check-app.lovable.app/";
+const TITLE = "Advocate Rajeshkumar Yadav | Bombay High Court, Mumbai";
 const DESC =
-  "Advocate & Notary (Govt. of India), B.A., LL.B. with 18+ years of practice in criminal law, cheque bounce (S.138), family court, SARFAESI/DRT, documentation, notary and arbitration matters in Mumbai.";
+  "Adv. Rajeshkumar L. Yadav — Advocate & Notary (Govt. of India) at Bombay High Court, Mumbai. 18+ years in criminal law, bail, cheque bounce, family court, SARFAESI/DRT & notary.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
+      {
+        name: "keywords",
+        content:
+          "advocate Mumbai, Bombay High Court advocate, criminal lawyer Mumbai, bail lawyer, cheque bounce lawyer, family court advocate, SARFAESI DRT lawyer, notary Mumbai, Adv. Rajeshkumar Yadav, Sakinaka advocate",
+      },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:site_name", content: "Adv. Rajeshkumar L. Yadav — Advocate & Notary" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: Landing,
 });
