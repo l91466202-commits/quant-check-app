@@ -28,3 +28,4 @@
 - [x] Add a root-accessible sitemap endpoint using the site's public canonical address.
 - [x] Include the homepage in the sitemap and omit non-existent standalone section URLs.
 - [x] Verify `/sitemap.xml` returns valid XML without generated `lastmod` values.
+- [x] Set the sitemap and homepage canonical address to `https://advocaterajesh.com`.
