@@ -25,3 +25,6 @@
 - [x] Shrink the intro overlay (icon, name, rule, tagline) and verify mobile rendering.
 - [x] Replace the Budget Pulse README with accurate advocate-site details.
 - [x] Remove unused Budget Pulse routes, helpers, and image metadata without changing lead capture or historical migrations.
+- [x] Add a root-accessible sitemap endpoint using the site's public canonical address.
+- [x] Include the homepage in the sitemap and omit non-existent standalone section URLs.
+- [x] Verify `/sitemap.xml` returns valid XML without generated `lastmod` values.

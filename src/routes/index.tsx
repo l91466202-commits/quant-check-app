@@ -40,6 +40,7 @@ const DESC =
   "Adv. Rajeshkumar L. Yadav — Advocate & Notary (Govt. of India) at Bombay High Court, Mumbai. 18+ years in criminal law, bail, cheque bounce, family court, SARFAESI/DRT & notary.";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: TITLE },

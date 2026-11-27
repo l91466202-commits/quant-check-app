@@ -14,3 +14,4 @@
 - Real scale pans animate only on fine-pointer desktop viewports, using opposite sinusoidal transform loops; mobile and reduced-motion views retain static pans to avoid unnecessary animation work.
 - Portrait tiles render matching full-frame image crops and use deterministic center-out motion, with 3D transforms limited to desktop.
 - Keep active routes focused on the public legal website and preserve historical Cloud migrations for existing database continuity.
+- Serve `/sitemap.xml` from a TanStack route generated from explicit route sitemap flags so public URLs follow the route inventory.
