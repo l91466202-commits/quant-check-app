@@ -35,9 +35,9 @@ import { Star } from "lucide-react";
 import silverHalo from "@/assets/silver-head-halo.png.asset.json";
 
 const SITE_URL = "https://advocaterajesh.com/";
-const TITLE = "Advocate Rajeshkumar Yadav | Bombay High Court, Mumbai";
+const TITLE = "Advocate Rajeshkumar L. Yadav | High Court Advocate in Mumbai";
 const DESC =
-  "Adv. Rajeshkumar L. Yadav — Advocate & Notary (Govt. of India) at Bombay High Court, Mumbai. 18+ years in criminal law, bail, cheque bounce, family court, SARFAESI/DRT & notary.";
+  "Looking for a top advocate in Mumbai? Adv. Rajeshkumar L. Yadav has 19+ years of experience in Civil, Criminal, and Property law. Book a consultation today.";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
